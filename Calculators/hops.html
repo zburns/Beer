@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 3.0//EN">
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>JavaScript Bitterness Calculator</title>
+
+<script language="JavaScript">
+<!-- To hide from old browsers
+
+//Input validation functions
+
+function checkNumber(input) {
+        input.value = parseFloat(input.value);
+        if(input.value == null ||          
+           input.value.length == 0 ||
+           input.value == "NaN" ||
+           input.value <= 0) {
+                input.value = "";
+        }
+        calcBitter(input.form);
+}
+
+function checkGravity(input) {
+        input.value = parseFloat(input.value);
+        if(input.value == null ||          
+           input.value.length == 0 ||
+           input.value == "NaN" ||
+           input.value <= 0 || 
+           input.value >= 2.0) {
+                input.value = "";
+        }
+        calcBitter(input.form);
+}
+
+function checkAlpha(input) {
+        input.value = parseFloat(input.value);
+        if(input.value == null ||          
+           input.value.length == 0 ||
+           input.value == "NaN" ||
+           input.value <= 0 || 
+           input.value > 100) {
+                input.value = "";
+        }
+        calcBitter(input.form);
+}
+
+//Main bitterness calculator function
+
+function calcBitter(input) {
+    var gravity;
+    var volume;
+    alpha = new Array(5);
+    mass = new Array(5);
+    time = new Array(5);
+    util = new Array(5);
+    mgperl = new Array(5);
+    bu = 0;
+    
+    volume = parseFloat(document.bitter.volume.value);
+    gravity = parseFloat(document.bitter.gravity.value)-1;
+	document.bitter[27].value = 0
+	
+    for (i=0; i<5; i++) {
+        if(document.bitter[2+i*5].value == "" || 
+           document.bitter[3+i*5].value == "" || 
+           document.bitter[4+i*5].value == "" || 
+           document.bitter.gravity.value == "" || 
+           document.bitter.volume.value == "") { 
+
+           		document.bitter[5+(i*5)].value = "";
+            	document.bitter[6+(i*5)].value = "";
+        }
+        else {
+            alpha[i] = parseFloat(document.bitter[2+i*5].value)/100;
+            mass[i] = parseFloat(document.bitter[3+i*5].value);
+            time[i] = parseFloat(document.bitter[4+i*5].value);
+                
+            mgperl[i] = alpha[i]*mass[i]*7490/volume;
+            util[i] = 1.65*Math.pow(0.000125, gravity)*(1-Math.exp(-0.04*time[i]))/4.15;
+				
+			document.bitter[5+i*5].value = Math.round(100*util[i]);
+			document.bitter[6+i*5].value = Math.round(mgperl[i]*util[i]);
+			bu += (mgperl[i]*util[i]);
+                
+            if(document.bitter[5+i*5].value == null || 
+               document.bitter[5+i*5].value.length == 0 || 
+               document.bitter[5+i*5].value == "NaN") {
+
+                	document.bitter[5+i*5].value = "";
+            }
+
+            if(document.bitter[6+i*5].value == null || 
+               document.bitter[6+i*5].value.length == 0 || 
+               document.bitter[6+i*5].value == "NaN") {
+
+                	document.bitter[6+i*5].value = "";
+            }
+   	    }
+    }
+    document.bitter.bu_total.value = Math.round(bu);
+}
+
+// Stop hiding-->
+</script>
+
+<style></style></head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#004000" vlink="#500000">
+
+<p>
+	<h1>Hop Bitterness Calculator</h1>
+</p>
+
+<p>
+<table border='1'>
+<tr>
+<td><h2><a href="mash.html">Mash Calculators</a></h2></td>
+<td><h2>Hop Bitterness Calculator</h2></td>
+<td><h2><a href="water.html">Water Chemistry Calculator</a></h2></td>
+</tr>
+</table>
+</p>
+
+</p>
+
+<form name="bitter">
+
+<table border="" cellpadding="2">
+<tbody><tr>
+	<td><b>Wort Specific Gravity (during the boil)</b> <input name="gravity" charset="0123456789." size="6" min="5" max="5" maxlength="6" value="1.050" onchange="checkGravity(this)"></td>
+	<td><b>Final Volume (gal)</b> <input name="volume" charset="0123456789." size="6" min="1" max="5" maxlength="6" value="5" onchange="checkNumber(this)"></td>
+</tr>
+
+</tbody></table>
+<p>
+
+</p>
+<table border="" cellpadding="2">
+<tbody><tr align="CENTER" valign="TOP">
+	<th>Hop Addition</th>
+	<th>Alpha Acid Percentage</th>
+	<th>Mass Added (oz)</th>
+	<th>Time Boiled (minutes)</th>
+	<th>Utilization Percentage</th>
+	<th>Bittering Units</th>
+</tr>
+<tr align="CENTER">
+	<td>First</td>
+	<td><input name="alpha1" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="5.0" onchange="checkAlpha(this)"></td>
+	<td><input name="mass1" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="2.0" onchange="checkNumber(this)"></td>
+	<td><input name="time1" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="60" onchange="checkNumber(this)"></td>
+	<td><input name="util1" charset="0123456789." size="5" min="1" max="2" maxlength="2"></td>
+	<td><input name="bu1" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+</tr>
+<tr align="CENTER">
+	<td>Second</td>
+	<td><input name="alpha2" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkAlpha(this)"></td>
+	<td><input name="mass2" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="time2" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="util2" charset="0123456789." size="5" min="1" max="2" maxlength="2"></td>
+	<td><input name="bu2" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+</tr>
+<tr align="CENTER">
+	<td>Third</td>
+	<td><input name="alpha3" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkAlpha(this)"></td>
+	<td><input name="mass3" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="time3" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="util3" charset="0123456789." size="5" min="1" max="2" maxlength="2"></td>
+	<td><input name="bu3" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+</tr>
+<tr align="CENTER">
+	<td>Fourth</td>
+	<td><input name="alpha4" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkAlpha(this)"></td>
+	<td><input name="mass4" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="time4" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="util4" charset="0123456789." size="5" min="1" max="2" maxlength="2"></td>
+	<td><input name="bu4" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+</tr>
+<tr align="CENTER">
+	<td>Fifth</td>
+	<td><input name="alpha5" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkAlpha(this)"></td>
+	<td><input name="mass5" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="time5" charset="0123456789." size="5" min="1" max="5" maxlength="5" onchange="checkNumber(this)"></td>
+	<td><input name="util5" charset="0123456789." size="5" min="1" max="2" maxlength="2"></td>
+	<td><input name="bu5" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+</tr>
+<tr align="CENTER">
+	<td colspan="4" rowspan="2" valign="center"></td>
+	<td><b>Total Bittering Units</b></td>
+	<td><input name="bu_total" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+</tr>
+<tr align="CENTER">
+	<td colspan="2" align="center"> 
+	<a href="JavaScript:calcBitter(this.form)">Calculate</a>
+</td></tr>
+</tbody></table>
+
+</form>
+
+
+</p></body></html>
