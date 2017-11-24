@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Various Mash Calculators</title>
+
+<style></style></head>
+<body>
+
+<script type="text/javascript">
+<!--
+
+
+function strikeReset(strike) {
+	strike.thick.value="1.25"
+	strike.strtemp.value="150"
+	strike.grntemp.value="60"
+	strike.measure[0].checked=true
+	} 
+
+function restReset(rest) {
+	rest.weight.value="10"
+	rest.thick.value="1.25"
+	rest.curtemp.value="135"
+	rest.tartemp.value="150"
+	rest.measure[0].checked=true
+	} 
+
+function mashReset(mash) {
+	mash.weight.value="10"
+	mash.thick.value="1.25"
+	mash.measure[0].checked=true
+	} 
+
+function convReset(convert) {
+	convert.unit.value="212"
+	convert.con[0].checked=true
+	}
+
+// These functions actually do all the calculating. See Ken Schwartz's
+// page to see an explanation of the formulae.
+
+function strikeCalc(strike) {
+	var thk=document.strike.thick.value
+	var str=document.strike.strtemp.value
+	var grn=document.strike.grntemp.value
+	MWR=parseFloat(thk)
+	Td=parseFloat(str)
+	Tg=parseFloat(grn)
+	if (MWR<=0 | isNaN(MWR)) {
+		alert("Mash thickness must be a number greater than 0!")
+		return
+		}
+	if (Td<=0 | isNaN(Td)) {
+		alert("Strike temperature must be a number greater than 0!")
+		return
+		}
+	if (Tg<=0 | isNaN(Tg)) {
+		alert("Grain temperature must be a number greater than 0!")
+		return
+		}
+	if (document.strike.measure[0].checked) {
+		if (Td>212) {
+			alert("Strike temperature must be lower than boiling (212F)!")
+			return
+			}
+		if (Tg>212) {
+			alert("Grain temperature must be lower than boiling (212F)!")
+			return
+			}
+		var Ts=Td+.192*(Td-Tg)/MWR+3
+		alert("The temperature of the strike water should be "+Math.round(Ts)+"F.")
+		return
+		}
+	else {
+		if (Td>100) {
+			alert("Strike temperature must be lower than boiling (100C)!")
+			return
+			}
+		if (Tg>100) {
+			alert("Grain temperature must be lower than boiling (100C)!")
+			return
+			}
+		var Ts=Td+.4*(Td-Tg)/MWR+1.7
+		alert("The temperature of the strike water should be "+Math.round(Ts)+"C.")
+		}
+	}
+
+function restCalc(rest) {
+	var wgt=document.rest.weight.value
+	var thk=document.rest.thick.value
+	var cur=document.rest.curtemp.value
+	var tar=document.rest.tartemp.value
+	Wg=parseFloat(wgt)
+	MWR=parseFloat(thk)
+	Tm=parseFloat(cur)
+	Tn=parseFloat(tar)
+	if (Wg<=0 | isNaN(Wg)) {
+		alert("Grain weight must be a number greater than 0!")
+		return
+		}
+	if (MWR<=0 | isNaN(MWR)) {
+		alert("Mash thickness must be a number greater than 0!")
+		return
+		}
+	if (Tm<=0 | isNaN(Tm)) {
+		alert("Current temperature must be a number greater than 0!")
+		return
+		}
+	if (Tn<=0 | isNaN(Tn)) {
+		alert("Target temperature must be a number greater than 0!")
+		return
+		}
+	if (Tm>=Tn) {
+		alert("Target temperature must be greater than the current temperature.")
+		return
+		}
+	if (document.rest.measure[0].checked) {
+		if (Tm>212) {
+			alert("Current temperature must be lower than boiling (212F)!")
+			return
+			}
+		if (Tn>212) {
+			alert("Target temperature must be lower than boiling (212F)!")
+			return
+			}
+		var Vm=Wg*(.192+MWR)
+		var Vs=Vm*(Tn-Tm)/(212-Tn)
+		alert("Add "+round(Vs,1)+" quarts boiling (212F) water to reach the rest at "+Tn+"F.")
+		}
+	else {
+		if (Tm>100) {
+			alert("Current temperature must be lower than boiling (100C)!")
+			return
+			}
+		if (Tn>100) {
+			alert("Target temperature must be lower than boiling (100C)!")
+			return
+			}
+		var Vm=Wg*(.4+MWR)
+		var Vs=Vm*(Tn-Tm)/(100-Tn)
+		alert("Add "+round(Vs,1)+" liters boiling (100C) water to reach the rest at "+Tn+"C.")
+		}		
+	}
+function mashCalc(mash) {
+	var wgt=document.mash.weight.value
+	var thk=document.mash.thick.value
+	Wg=parseFloat(wgt)
+	MWR=parseFloat(thk)
+	if (Wg<=0 | isNaN(Wg)) {
+		alert("Grain weight must be a number greater than 0!")
+		return
+		}
+	if (MWR<=0 | isNaN(MWR)) {
+		alert("Mash thickness must be a number greater than 0!")
+		return
+		}
+	if (document.mash.measure[0].checked) {
+		var Vm=Wg*(.08+MWR/4)
+		alert("This mash will take up "+round(Vm,2)+" gallons of space.")
+		}
+	else {
+		var Vm=Wg*(.67+MWR)
+		alert("This mash will take up "+round(Vm,2)+" liters of space.")
+		}		
+	}
+
+function convUnit(convert) {
+	meas=parseFloat(document.convert.unit.value)
+	if (isNaN(meas)) {
+		alert("Amount to Convert must be a number!")
+		return
+		}
+	if (document.convert.con[0].checked) {
+		answer=(meas-32)*5/9
+		alert(meas+"F = "+round(answer,2)+"C")
+		return
+		}
+	if (document.convert.con[1].checked) {
+		answer=meas*9/5+32
+		alert(meas+"C = "+round(answer,2)+"F")
+		return
+		}
+	if (document.convert.con[2].checked) {
+		answer=meas*.4536
+		alert(meas+" lb = "+round(answer,2)+" kg")
+		return
+		}
+	if (document.convert.con[3].checked) {
+		answer=meas*2.2046
+		alert(meas+" kg = "+round(answer,2)+" lb")
+		return
+		}
+	if (document.convert.con[4].checked) {
+		answer=meas*.9463
+		alert(meas+" qt = "+round(answer,2)+" liters")
+		return
+		}
+	if (document.convert.con[5].checked) {
+		answer=meas*1.057
+		alert(meas+" liters = "+round(answer,2)+" qt")
+		return
+		}
+	if (document.convert.con[6].checked) {
+		answer=meas*28.35
+		alert(meas+" oz = "+round(answer,2)+" g")
+		return
+		}
+	if (document.convert.con[7].checked) {
+		answer=meas*.0352
+		alert(meas+" g = "+round(answer,2)+" oz")
+		return
+		}
+	}
+
+// This function rounds a floating point number off to the number of
+// decimal places specified by the variable "off."
+
+function round(number, off) {
+	i=Math.pow(10,off)
+	return Math.round(number*i)/i
+	}
+
+//-->
+</script>
+
+
+
+<div id="content">
+<body bgcolor="#FFFFFF" text="#000000" link="#004000" vlink="#500000">
+
+<p>
+	<h1>Mash Calculators</h1>
+</p>
+
+<p>
+<table border='1'>
+<tr>
+<td><h2>Mash Calculators</h2></td>
+<td><h2><a href="hops.html">Hop Bitterness Calculator</a></h2></td>
+<td><h2><a href="water.html">Water Chemistry Calculator</a></h2></td>
+</tr>
+</table>
+</p>
+
+<h3>Strike Temperature Calculator</h3>
+<p class="center"><i>Calculate the temperature your strike water needs<br>
+to be in order to hit the desired mash-in temperature.</i></p>
+<form name="strike" action="mash.html">
+<p class="center"><input type="text" value="1.25" name="thick" maxlength="10" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"> Mash Thickness (qt/lb or liters/kg)</p>
+<p class="center"><input type="text" value="150" name="strtemp" maxlength="10"> Desired Strike Temperature (deg F or C)</p>
+<p class="center"><input type="text" value="60" name="grntemp" maxlength="10"> Temperature of Grain (deg F or C)</p>
+<p class="center">Units of Measurement: <input type="radio" name="measure" value="Standard" checked="checked">American <input type="radio" name="measure" value="Metric">Metric</p>
+<p class="center"><input type="button" value="Calculate" onclick="strikeCalc(this.form)">
+<input type="button" value="Reset" onclick="strikeReset(this.form)"></p>
+</form>
+<p>&nbsp;</p>
+
+<h3>Rest Calculator</h3>
+<p class="center"><i>Calculate the amount of boiling water you need<br>
+to raise your mash to the next rest temperature.</i></p>
+<form name="rest" action="mash.html">
+<p class="center"><input type="text" value="10" name="weight" maxlength="10" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;"> Weight of Grains (lb or kg)</p>
+<p class="center"><input type="text" value="1.25" name="thick" maxlength="10"> Mash Thickness (qt/lb or liters/kg)</p>
+<p class="center"><input type="text" value="135" name="curtemp" maxlength="10"> Current Temperature (deg F or C)</p>
+<p class="center"><input type="text" value="150" name="tartemp" maxlength="10"> Target Temperature (deg F or C)</p>
+<p class="center">Units of Measurement: <input type="radio" name="measure" value="Standard" checked="checked"> American <input type="radio" name="measure" value="Metric"> Metric</p>
+<p class="center"><input type="button" value="Calculate" onclick="restCalc(this.form)">
+<input type="button" value="Reset" onclick="restReset(this.form)"></p>
+</form>
+<p>&nbsp;</p>
+
+<h3>Can I Mash It?</h3>
+<p class="center"><i>Find out if your mash tun is big enough to<br>
+hold your grain bill plus the strike water.<br>
+<b>Note!</b> This calculator does not take the<br>
+space under your false bottom into account!</i></p>
+<form name="mash" action="mash.html">
+<p class="center"><input type="text" value="10" name="weight" maxlength="10"> Weight of Grains (lb or kg)</p>
+<p class="center"><input type="text" value="1.25" name="thick" maxlength="10"> Mash Thickness (qt/lb or liters/kg)</p>
+<p class="center">Units of Measurement: <input type="radio" name="measure" value="Standard" checked="checked">American <input type="radio" name="measure" value="Metric">Metric</p>
+<p class="center"><input type="button" value="Calculate" onclick="mashCalc(this.form)">
+<input type="button" value="Reset" onclick="mashReset(this.form)"></p>
+</form>
+<p>&nbsp;</p>
+</div>
+
+<h3>American/Metric Conversion</h3>
+<form name="convert" action="mash.html">
+<div class="center"><table border="0" cellpadding="5">
+<tbody><tr><th colspan="2">Amount to Convert<br><br><input type="text" value="212" name="unit" maxlength="10"></th></tr>
+<tr><th colspan="2">Conversion</th></tr>
+<tr><td><input type="radio" name="con" value="F2C" checked="checked">deg F to deg C<br>
+<input type="radio" name="con" value="C2F">deg C to deg F</td>
+<td><input type="radio" name="con" value="lb2kg">pounds to kilograms<br>
+<input type="radio" name="con" value="kg2lb">kilograms to pounds</td></tr>
+<tr><td><input type="radio" name="con" value="qt2lt">quarts to liters<br>
+<input type="radio" name="con" value="lt2qt">liters to quarts</td>
+<td><input type="radio" name="con" value="oz2g">ounces to grams<br>
+<input type="radio" name="con" value="g2oz">grams to ounces</td></tr>
+<tr><td colspan="2"><p class="center"><input type="button" value="Calculate" onclick="convUnit(this.form)">
+<input type="button" value="Reset" onclick="convReset(this.form)"></p></td></tr>
+</tbody></table>
+</div>
+</form>
+
+</body></html>
