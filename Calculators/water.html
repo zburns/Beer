@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>Water Chemistry Calculator</title>
+
+<script language="JavaScript">
+<!-- To hide from old browsers
+
+//Input validation functions
+
+function checkNumber(input) {
+        input.value = parseFloat(input.value);
+        if(input.value == null ||          
+           input.value.length == 0 ||
+           input.value == "NaN" ||
+           input.value <= 0) {
+                input.value = "0";
+        }
+        calcWater(input.form);
+}
+
+//Main water content calculator function
+
+function calcWater(input) {
+    var volume = parseFloat(document.water.volume.value);
+    var CaSO4 = parseFloat(document.water.CaSO4.value);
+    var NaCl = parseFloat(document.water.NaCl.value);
+    var CaCl2 = parseFloat(document.water.CaCl2.value);
+    var MgSO4 = parseFloat(document.water.MgSO4.value);
+    var CaCO3 = parseFloat(document.water.CaCO3.value);
+    var Ca = 0;
+    var Na = 0;
+    var Mg = 0;
+    var SO4 = 0;
+    var CO3 = 0;
+    var Cl = 0;
+    
+    document.water.Ca.value = 0;
+    document.water.Mg.value = 0;
+    document.water.Na.value = 0;
+    document.water.SO4.value = 0;
+    document.water.CO3.value = 0;
+    document.water.Cl.value = 0;
+    
+	Ca = 1000*(CaSO4*0.233+CaCO3*0.4+CaCl2*0.183)/3.785/volume
+	Mg = 1000*MgSO4*0.1/3.785/volume
+	Na = 1000*NaCl*0.39/3.785/volume
+	SO4 = 1000*(CaSO4*0.558+MgSO4*0.39)/3.785/volume
+	CO3 = 1000*CaCO3*0.6/3.785/volume
+	Cl = 1000*(CaCl2*0.324+NaCl*0.61)/3.785/volume
+
+	document.water.Ca.value = Math.round(Ca);
+	document.water.Mg.value = Math.round(Mg);
+	document.water.Na.value = Math.round(Na);
+	document.water.SO4.value = Math.round(SO4);
+	document.water.CO3.value = Math.round(CO3);
+	document.water.Cl.value = Math.round(Cl);
+}
+
+// Stop hiding-->
+</script>
+
+<style></style></head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#004000" vlink="#500000">
+
+<p>
+	<h1>Water Chemistry Calculator</h1>
+</p>
+
+<p>
+<table border='1'>
+<tr>
+<td><h2><a href="mash.html">Mash Calculators</a></h2></td>
+<td><h2><a href="hops.html">Hop Bitterness Calculator</a></h2></td>
+<td><h2>Water Chemistry Calculator</h2></td>
+</tr>
+</table>
+</p>
+
+</p><p>
+Thus calculates the ppm of all the important brewing ions based on the water volume and the mass of
+the salts you add. Enter a number for each salt you want to add (under the <b>Mass Added</b> column) and click <b>Calculate</b>.</p>
+
+<form name="water">
+
+<table border="" cellpadding="2">
+<tbody><tr>
+	<td><b>Volume (gal)</b> <input name="volume" charset="0123456789." size="6" min="1" max="5" maxlength="6" value="5" onchange="checkNumber(this)"></td>
+</tr>
+</tbody></table>
+
+<p></p>
+
+<table border="" cellpadding="2">
+	<tbody><tr align="CENTER" valign="TOP">
+		<th colspan="2">Mass Added (g)</th>
+		<th colspan="2">PPM (mg/l) Added</th>
+	</tr>
+	<tr align="CENTER">
+		<td>CaSO4 (gypsum)</td>
+		<td><input name="CaSO4" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="0" onchange="checkNumber(this)"></td>
+		<td>Ca++ (calcium ion)</td>
+		<td><input name="Ca" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+	</tr>
+	<tr align="CENTER">
+		<td>NaCl (table salt)</td>
+		<td><input name="NaCl" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="0" onchange="checkNumber(this)"></td>
+		<td>Mg++ (magnesium ion)</td>
+		<td><input name="Mg" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+	</tr>
+	<tr align="CENTER">
+		<td>CaCO3 (chalk)</td>
+		<td><input name="CaCO3" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="0" onchange="checkNumber(this)"></td>
+		<td>Na+ (sodium ion)</td>
+		<td><input name="Na" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+	</tr>
+	<tr align="CENTER">
+		<td>MgSO4*7H2O (epsom salt)</td>
+		<td><input name="MgSO4" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="0" onchange="checkNumber(this)"></td>
+		<td>SO4-- (sulfate ion)</td>
+		<td><input name="SO4" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+	</tr>
+	<tr align="CENTER">
+		<td>CaCl2*6H2O</td>
+		<td><input name="CaCl2" charset="0123456789." size="5" min="1" max="5" maxlength="5" value="0" onchange="checkNumber(this)"></td>
+		<td>CO3-- (carbonate ion)</td>
+		<td><input name="CO3" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+	</tr>
+	<tr align="CENTER">
+		<td colspan="2" rowspan="2"></td>
+		<td>Cl- (chloride ion)</td>
+		<td><input name="Cl" charset="0123456789." size="5" min="1" max="3" maxlength="3"></td>
+    </tr>
+	<tr align="CENTER">
+		<td colspan="2" align="center"> 
+		<a href="JavaScript:calcWater(this.form)">Calculate</a>
+	</td></tr>
+</tbody></table>
+
+</form>
+
+
+</p></body></html>
