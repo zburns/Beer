@@ -3,8 +3,14 @@ Brewer's Notes
 Brew Master: Zachary H. Burns
 Brew Name: 
 Brew Type: Dunkel Weizenbock Extract
-Brew Date: 11/19/2017
+Brew Date: 11/25/2017
 
 Notes:
 
-This beer is a Chocolate Wheat and Munich malt combined to create a rich, malty flavor with hints of clove and banana from the specially selected yeast - alcohol content should be relatively hight at 6.2% or so - which should make it a good winter brew.
+This beer is a Chocolate Wheat and Munich malt combined to create a rich, malty flavor with hints of clove and banana from the specially selected yeast - alcohol content should be relatively high at 6.2% or so - which should make it a good winter brew.
+
+This batch was made with a new equipment setup...new boil kettle, new fermenter, condenser coil to cool wort, etc.
+
+I performed a full boil for this recipe and the garage was 40 degrees, so there was still excessive boil off.  I had to add a few quarts of water at the end of the transfer to the fermentation tank (which I wanted to avoid).  In the future, I'm going to start with 6.5 or 7 gallons of water.
+
+With the coil and no other aid, it took about 30 minutes to cool to 70 degrees before transfer.
