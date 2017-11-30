@@ -39,4 +39,6 @@ My Equipment and Wish List Items
 | 33           | Quick Disconnects                        |     ?     |               |     Want       |            |
 | 34           | Small 5.2 Chest Freezer for Keezer Mod   |     ?     |               |     Want       |            |
 | 35           | Thermostat Controller                    |     ?     |               |     Want       |            |
+| 36           | Auto Siphon                              |     ?     |               |     Want       |            |
+| 37           | Refractometer                            |     ?     |               |     Want       |            |
 | Total Value  |                                          |           |               |                |     862.56 |
