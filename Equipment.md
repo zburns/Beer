@@ -35,4 +35,8 @@ My Equipment and Wish List Items
 | 29           | 10lb Carbon Dioxide Cylinder             |     1     | 11/20/2017    |      Own       |     113.00 |
 | 30           | Silicone Tubing instead of Vinyl         |     ?     |               |     Want       |            |
 | 31           | Hose End to Quick Shut Off Water         |     ?     |               |     Want       |            |
+| 32           | Continuous Sparge Recirc Pump            |     ?     |               |     Want       |            |
+| 33           | Quick Disconnects                        |     ?     |               |     Want       |            |
+| 34           | Small 5.2 Chest Freezer for Keezer Mod   |     ?     |               |     Want       |            |
+| 35           | Thermostat Controller                    |     ?     |               |     Want       |            |
 | Total Value  |                                          |           |               |                |     862.56 |
