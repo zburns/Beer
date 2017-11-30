@@ -33,4 +33,6 @@ My Equipment and Wish List Items
 | 27           | Chrome Faucet                            |     2     | 11/20/2017    |      Own       |      12.95 |
 | 28           | Ball Lock 5 Gallon Keg                   |     2     | 11/20/2017    |      Own       |      32.48 |
 | 29           | 10lb Carbon Dioxide Cylinder             |     1     | 11/20/2017    |      Own       |     113.00 |
+| 30           | Silicone Tubing instead of Vinyl         |     ?     |               |     Want       |            |
+| 31           | Hose End to Quick Shut Off Water         |     ?     |               |     Want       |            |
 | Total Value  |                                          |           |               |                |     862.56 |
