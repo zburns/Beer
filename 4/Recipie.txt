@@ -15,7 +15,7 @@ Hops
 
 
 
-
+** READ BREW NOTES - Had a Thermometer Issue!!! **
 
 
 Estimated Ranges
@@ -30,8 +30,8 @@ Original Gravity - Final Gravity * 131 = ABV%
 
 Actual Ranges
 
-Original Gravity (OG) - 
-Temperature of Wort at Pitching Yeast - 
+Original Gravity (OG) - 1.053
+Temperature of Wort at Pitching Yeast - 72
 Lag time from onset of fermentation - 
 Actual fermentation temperature - 
 Final Gravity - 
