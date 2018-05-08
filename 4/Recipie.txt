@@ -31,7 +31,8 @@ Original Gravity - Final Gravity * 131 = ABV%
 Actual Ranges
 
 Original Gravity (OG) - 1.053
-Temperature of Wort at Pitching Yeast - 72
-Lag time from onset of fermentation - 
-Actual fermentation temperature - 
+Temperature of Wort at Pitching Yeast - 77
+Lag time from onset of fermentation - 12 hours or so
+Actual fermentation temperature - 72
+Gravity Measured on 5/6/2018 (1 week after brew date) - 1.021 = 4.2% ABV
 Final Gravity - 
