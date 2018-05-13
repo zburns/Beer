@@ -35,4 +35,6 @@ Temperature of Wort at Pitching Yeast - 77
 Lag time from onset of fermentation - 12 hours or so
 Actual fermentation temperature - 72
 Gravity Measured on 5/6/2018 (1 week after brew date) - 1.021 = 4.2% ABV
-Final Gravity - 
+Final Gravity Measured on 5/13/2018 (2 weeks after brew date) = 1.025 = 3.6% ABV
+
+See notes!!!
