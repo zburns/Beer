@@ -33,12 +33,12 @@ My Equipment and Wish List Items
 | 27           | Chrome Faucet                            |     2     | 11/20/2017    |      Own       |      12.95 |
 | 28           | Ball Lock 5 Gallon Keg                   |     2     | 11/20/2017    |      Own       |      32.48 |
 | 29           | 10lb Carbon Dioxide Cylinder             |     1     | 11/20/2017    |      Own       |     113.00 |
-| 30           | Silicone Tubing instead of Vinyl         |     ?     |               |     Want       |            |
-| 31           | Hose End to Quick Shut Off Water         |     ?     |               |     Want       |            |
-| 32           | Continuous Sparge Recirc Pump            |     ?     |               |     Want       |            |
-| 33           | Quick Disconnects                        |     ?     |               |     Want       |            |
-| 34           | Small 5.2 Chest Freezer for Keezer Mod   |     ?     |               |     Want       |            |
-| 35           | Thermostat Controller                    |     ?     |               |     Want       |            |
-| 36           | Auto Siphon                              |     ?     |               |     Want       |            |
-| 37           | Refractometer                            |     ?     |               |     Want       |            |
+| 30           | Silicone Tubing instead of Vinyl         |     1     | 12/25/2017    |      Own       |            |
+| 31           | Hose End to Quick Shut Off Water         |     1     |               |     Want       |            |
+| 32           | Continuous Sparge Recirc Pump            |     1     |               |     Want       |            |
+| 33           | Quick Disconnects                        |     1     |               |     Want       |            |
+| 34           | Small 5.2 Chest Freezer for Keezer Mod   |     1     |               |     Want       |            |
+| 35           | Thermostat Controller                    |     1     | 12/25/2017    |     Own        |            |
+| 36           | Auto Siphon                              |     1     | 12/25/2017    |     Own        |            |
+| 37           | Refractometer                            |     1     | 12/25/2017    |     Own        |            |
 | Total Value  |                                          |           |               |                |     862.56 |
