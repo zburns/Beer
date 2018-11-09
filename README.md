@@ -11,3 +11,5 @@ My Brewing Recipes, Notes, Dates, and Bottling Label Images
 | 5            | [Squished IPA](https://github.com/zburns/Beer/tree/master/5) | Session IPA | 5/29/2018   | 6/11/2018 (Keg)   | ![alt text](https://github.com/zburns/Beer/blob/master/5/Bottles/icon.png " ") |
 | 6            | [Bust-Da-Nut Brown Ale](https://github.com/zburns/Beer/tree/master/6) | Ale | 6/11/2018   |        | ![alt text](https://github.com/zburns/Beer/blob/master/6/Bottles/icon.png " ") |
 | 7            | [Two Gallon Bud](https://github.com/zburns/Beer/tree/master/7) | Pilsner | 5/15/2018   |  6/11/2018 (Bottle)  | ![alt text](https://github.com/zburns/Beer/blob/master/7/Bottles/icon.png " ") |
+| 8            | [Holiday Ale Gone Wrong](https://github.com/zburns/Beer/tree/master/8) | Ale | 10/20/2018   |  (Keg)  | ![alt text](https://github.com/zburns/Beer/blob/master/8/Bottles/icon.png " ") |
+| 9            | [Milk Stout](https://github.com/zburns/Beer/tree/master/9) | Stout | 10/20/2018   |  (Keg)  | ![alt text](https://github.com/zburns/Beer/blob/master/9/Bottles/icon.png " ") |
